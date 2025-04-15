@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Share Artist Playlist</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='shareartist.css') }}">
+  <script src="{{ url_for('static', filename='hehe.js') }}"></script>
+</head>
+<body class="shareartist">
+  {% if message %}
+    <div id="notification" class="notification">{{ message }}</div>
+  {% endif %}
+  <div class="message3">
+    <h1>Share Artist: {{ artist_name }}</h1>
+  </div>
+  {% for song in songs %}
+    <div class="music-item">
+      <p>{{ song.title }} by "{{ song.artist }}" ({{ song.genre }})</p>
+      <audio controls>
+        <source src="{{ url_for('static', filename=song.file) }}" type="audio/mpeg" />
+      </audio>
+    </div>
+  {% endfor %}
+  
+  <p class="message3">Copy the URL below to share {{ artist_name }}:</p>
+  <input type="text" id="shareURL" class="share-url" value="{{ request.url }}" readonly onclick="this.select();">
+  <button class="copy-button" onclick="copyURL()">Copy URL</button>
+
+  <button class="share-friend-button" type="button" onclick="openMiniwindow()">Share with a Friend</button>
+
+  <div class="button-container">
+    <a href="{{ url_for('dashboard') }}">
+      <button class="dashboard-btn">Return to Dashboard</button>
+    </a>
+  </div>
+</div>
+  <div id="friendMiniwindow" class="miniwindow">
+    <div class="miniwindow-content">
+      <span class="close" onclick="closeMiniwindow()">&times;</span>
+      <h2>Share with a Friend</h2>
+      <input type="text" id="friendInput" placeholder="Enter friend's username">
+      <button type="button" onclick="submitFriend()">Share</button>
+      <p id="miniwindowError" class="error-message"></p>
+    </div>
+  </div>
+
+</body>
+</html>

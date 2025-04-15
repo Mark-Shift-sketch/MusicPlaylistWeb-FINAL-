@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin_dashboard.css') }}">
+</head>
+<body class="dashboard">
+  <header class="header">
+    <h1>Admin Dashboard</h1>
+    <a class="go" href="{{ url_for('admin_media') }}" class="action-btn">Go to Admin Media</a>
+
+    <nav class="menu">
+      <a class="cmenu" href="{{ url_for('dashboard') }}">User Dashboard</a>
+      <a class="cmenu" href="{{ url_for('admin_update') }}">Post Update</a>
+      <a class="cmenu" href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2 class="title">Overview / Analytics</h2> 
+  <div class="dashboard-grid">
+  <div class="card">
+    <h3>Total Users</h3>
+    <p>{{ total_users }}</p>
+  </div>
+  <div class="card">
+    <h3>Total Songs</h3>
+    <p>{{ total_songs }}</p>
+  </div>
+  <div class="card">
+    <h3>Total Playlists</h3>
+    <p>{{ total_playlists }}</p>
+  </div>
+  <div class="card">
+    <h3>New Sign-ups (Last 7 Days)</h3>
+    <p>{{ recent_signups|length }}</p>
+  </div>
+  <div class="card">
+    <h3>Most Active Users</h3>
+    <ul>
+      {% for user in most_active_users %}
+        <li>{{ user.username }} ({{ user.playlist_count }} playlists)</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Recent Admin Posts</h3>
+    <ul>
+      {% for update in updates %}
+  <li>{{ update.title }}: {{ update.message }}</li>
+{% endfor %}
+    </ul>
+  </div>
+</div>
+
+  <hr>
+  <div class="user-management">
+      <h2>User Management</h2>
+      <input type="text" id="userSearch" placeholder="Search by username or email" onkeyup="filterUsers()">
+      {% if all_users %}
+    <table>
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Playlists</th>
+          <th>Songs Shared</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="userTable">
+        {% for user in all_users %}
+          <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ 'Banned' if user.is_banned else 'Active' }}</td>
+            <td>{{ user.playlist_count }}</td>
+            <td>{{ user.shared_song_count }}</td>
+            <td>
+              {% if user.is_banned %}
+                <a href="{{ url_for('unban_user', username=user.username) }}" class="action-btn unban-btn">Unban</a>
+              {% else %}
+                <a href="{{ url_for('ban_user', username=user.username) }}" class="action-btn ban-btn">Ban</a>
+              {% endif %}
+              <a href="{{ url_for('delete_user', username=user.username) }}" class="action-btn delete-btn">Delete</a>
+            </td>
+            
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <hr>
+    <div id="userTableContainer">
+      <table id="userTable">
+    <div class="user-management">
+    <h2>Reports & Moderation</h2>
+    {% if reports %}
+      <table>
+        <thead>
+          <tr>
+            <th>Reporter</th>
+            <th>Content Type</th>
+            <th>Reported Item</th>
+            <th>Reason</th>
+            <th>Timestamp</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for report in reports %}
+          <tr>
+            <td>{{ report.reporter }}</td>
+            <td>{{ report.content_type }}</td>
+            <td>{{ report.content }}</td>
+            <td>{{ report.reason }}</td>
+            <td>{{ report.timestamp }}</td>
+            <td>
+              <a href="{{ url_for('delete_reported_content', report_id=report.id) }}" class="action-btn delete-btn">Delete Content</a>
+              <a href="{{ url_for('dismiss_report', report_id=report.id) }}" class="action-btn unban-btn">Dismiss</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p style="text-align:center; font-size: 16px; padding: 20px;">No reports found.</p>
+    {% endif %}
+    <hr>
+<div class="user-management">
+  <h2>Shared Content Tracking</h2>
+  {% if shared_content %}
+    <table>
+      <thead>
+        <tr>
+          <th>Sender</th>
+          <th>Receiver</th>
+          <th>Type</th>
+          <th>Content</th>
+          <th>Timestamp</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for shared in shared_content %}
+        <tr>
+          <td>{{ shared.sender }}</td>
+          <td>{{ shared.receiver }}</td>
+          <td>{{ shared.content_type }}</td>
+          <td>{{ shared.content }}</td>
+          <td>{{ shared.timestamp }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p style="text-align:center; font-size: 16px; padding: 20px;">
+      No shared content found.
+    </p>
+  {% endif %}
+</div>
+
+</div>
+
+{% else %}
+  <p style="text-align:center; font-size: 16px; padding: 20px;">
+    No users found in the system.
+  </p>
+{% endif %}
+
+      </tbody>
+    </table>
+  </div>
+</table>
+</table>
+</div>
+</main>
+
+
+<footer class="footer">
+    <p class="text">© 2025 Admin Panel - Music Playlist Hub</p>
+</footer>
+<script>
+    function filterUsers() {
+      const input = document.getElementById("userSearch").value.toLowerCase();
+      const rows = document.querySelectorAll("#userTable tr");
+    
+      rows.forEach(row => {
+        const rowText = row.innerText.toLowerCase();
+        row.style.display = rowText.includes(input) ? "" : "none";
+      });
+    }
+    </script>
+    
+</body>
+</html>

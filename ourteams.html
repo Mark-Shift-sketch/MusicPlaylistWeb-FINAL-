@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Out Team</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='teams.css') }}">
+
+</head>
+<body class='teamdash'>
+    <div class="containerourteams">
+        <div class='team'>
+            <img src="{{ url_for('static', filename='aristas.jpg') }}" class="picture" >
+            <p><strong>Aristas, Joseph M</strong></p>
+            <br></br>
+            <p><strong>Role in Project</strong></p>
+            <br>
+            <p>Team Lead, Features Developer</p>
+            <br>
+            <p><strong>Skills</strong></p>
+            <br>
+            <p>Python, Java, HTML, CSSL</p>
+            
+            
+        </div>
+        <div class='team'>
+            <img src="{{ url_for('static', filename='arcanses.jpg') }}" class="picture" >
+            <p><strong>Arcanses, Mark Dominic E</strong></p>
+            <br></br>
+            <p><strong>Role in Project</strong></p>
+            <br>
+            <p>Lead Developer, Backend Developer, Features Developer</p>
+            <br>
+            <p><strong>Skills</strong></p>
+            <br>
+            <p>Basic Python, HTML, CSS, SQL, MySQL</p>
+            
+        </div>
+        <div class='team'>
+            <img src="{{ url_for('static', filename='dagulo.jpg') }}" class="picture" >
+            <p><strong>Dagulo, Carl Louis W</strong></p>
+            <br></br>
+            <p><strong>Role in Project</strong></p>
+            <br>
+            <p>Frontend Developer, Frontend Developer</p>
+            <br>
+            <p><strong>Skills</strong></p>
+            <br>
+            <p> Basic Python, Java, Communication, Teamwork</p>
+            
+
+        </div>
+        <div class='team'>
+            <img src="{{ url_for('static', filename='dm.jpg') }}" class="picture" >
+     
+            <p><strong>Jangao, Datu Miguel</strong></p>
+            <br></br>
+            <p><strong>Role in Project</strong></p>
+            <br>
+            <p>Frontend Developer, Frontend Developer</p>
+            <br>
+            <p><strong>Skills</strong></p>
+            <br>
+            <p> Basic Python, Java</p>
+            <br>
+        </div>
+        <div class='team'>
+            <img src="{{ url_for('static', filename='macaranas.jpg') }}" class="picture" >
+            <p><strong>Macaranas, Anthony B</strong></p>
+            <br></br>
+            <p><strong>Role in Project</strong></p>
+            <p>Backend Developer, Frontend Developer</p>
+            <br>
+            <p><strong>Skills</strong></p>
+            <br>
+            <p> Basic Python, Java</p>
+            <br>
+        </div>
+
+    </div>
+
+    <div class="instructor-section">
+        <div class="ourinstructor">
+            <p class="name1">Meet Our Instructor</p>
+            <img src="{{ url_for('static', filename='sir.jpg') }}" class="picturesir">
+            <p class='name1'>Kiven, Ranan L</p>
+            <div class="description">Mr. Kiven, Ranan L, has been more than just our instructor he’s been a mentor who challenged us to grow, think critically, and work with purpose. His guidance has played a huge role in our development as first-year tech students.</div>
+
+        </div>
+    
+    </div>
+    
+    <div class="team-section">
+        <h2 class="team-heading">Meet Our Teams</h2>
+        <div class="team-image-container">
+          <img src="{{ url_for('static', filename='all2.jpg') }}" alt="All Team Members" class="team-image">
+        </div>
+        <p class="description">As first-year students diving into the world of technology, we bring fresh perspectives, strong teamwork, and a shared excitement for innovation. Every challenge is a chance for us to grow and we're just getting started.</p>
+      </div>
+      <div class="button-container">
+        <a href="{{ url_for('dashboard') }}">
+          <button class="dashboard-btn">Return to Dashboard</button>
+        </a>
+      </div>
+      
+      
+</body>
+</html>

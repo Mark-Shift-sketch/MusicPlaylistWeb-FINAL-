@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Out Team</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+</head>
+<body class='about'>
+    <section class="about-section" id="about">
+        <h2 class="about-heading">About Music Playlist Hub</h2>
+        <p class="about-text">
+          Music Playlist Hub is a simple and fun web app designed to make your music experience personal and social. Whether you’re into Pop, Rock, Classical, or Jazz, this platform lets you explore music your way.
+        </p>
+        <p class="about-text">
+          As first-year IT students, we built this system to combine creativity with code and give users a space where they can easily create, organize, and share their favorite songs and playlists.
+        </p>
+        <p class="about-text">
+          With features like genre-based browsing, custom playlists, search and share tools, and user friendly playlist editing, Music Playlist Hub makes discovering and enjoying music a whole lot smoother.
+        </p>
+        <p class="about-text">
+          This project reflects our learning journey, love for music, and the power of teamwork.
+        </p>
+      </section>
+      
+      <div class="button-container">
+        <a href="{{ url_for('dashboard') }}">
+          <button class="dashboard-btn">Return to Dashboard</button>
+        </a>
+      </div>
+      
+</body>
+</html>

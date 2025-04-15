@@ -1,0 +1,142 @@
+.shareartist {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('backgound.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.info{
+    color: black;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+.dashboard-btn {
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #00ffff, #007fff);
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dashboard-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #00e0e0, #005fef);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+}
+.message3{
+    color: white;
+} 
+.music-item audio {
+    width: 100%;
+    margin-top: 10px;
+}
+.music-results {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 5px;
+    color: #333;
+}
+    
+.music-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+.share-url {
+    width: 100%;
+    padding: 8px;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+.copy-button, .share-friend-button {
+    padding: 8px 12px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.shared1{
+    color: black;
+}
+.shared-song-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+  
+.shared-song-item {
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 10px;
+}
+  
+.shared-song-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.song-info {
+    font-size: 16px;
+    color: #555;
+}
+  
+.song-title {
+    font-weight: bold;
+}
+  
+.song-artist, .song-genre {
+    font-style: italic;
+    color: #777;
+}
+  /* Mini window container */
+.miniwindow {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+  /* Mini window content */
+.miniwindow-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 5px;
+}
+  /* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+  

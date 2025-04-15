@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Update</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin_update.css')}}">
+  <script src="{{ url_for('static', filename='hehe.js') }}"></script>
+</head>
+<body class="admin-page">
+    {% if message %}
+    <div class="alert">
+      {{ message }}
+    </div>
+  {% endif %}
+  
+  <header class="header">
+    <h1>Edit Update</h1>
+    <nav class="headerinfo">
+      <a class='where' href="{{ url_for('admin_update') }}">Back to Update Page</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <form method="POST" class="update-form">
+      <label for="title">Title:</label><br>
+      <input type="text" id="title" name="title" value="{{ update.title }}" required><br><br>
+
+      <label for="message">Message:</label><br>
+      <textarea id="message" name="message" rows="5" required>{{ update.message }}</textarea><br><br>
+
+      <button type="submit">Save Changes</button>
+    </form>
+  </main>
+  
+  
+</body>
+</html>

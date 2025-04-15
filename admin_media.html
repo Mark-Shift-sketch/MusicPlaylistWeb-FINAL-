@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Media Management</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1, h2 {
+      color: #1f4e66;
+    }
+    .section {
+      margin-bottom: 40px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #1f4e66;
+      color: #fff;
+    }
+    tr:hover {
+      background-color: #f1f7fb;
+    }
+    .action-btn {
+      background-color: #3b82f6;
+      border: none;
+      color: #fff;
+      padding: 5px 8px;
+      margin-right: 4px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: background-color 0.3s;
+      text-decoration: none;
+    }
+    .action-btn:hover {
+      background-color: #2563eb;
+    }
+    .delete-btn {
+      background-color: #e53e3e;
+    }
+    .delete-btn:hover {
+      background-color: #c53030;
+    }
+    .edit-btn {
+      background-color: #38a169;
+    }
+    .edit-btn:hover {
+      background-color: #2f855a;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Admin Media Management</h1>
+    <nav>
+      <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a> |
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+  </header>
+
+  <div class="section">
+    <h2>Playlists</h2>
+    {% if playlists %}
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>User ID</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for playlist in playlists %}
+          <tr>
+            <td>{{ playlist.id }}</td>
+            <td>{{ playlist.name }}</td>
+            <td>{{ playlist.user_id }}</td>
+            <td>
+              <!-- Replace '#' with the proper route once implemented -->
+              <a href="#" class="action-btn edit-btn">Edit</a>
+              <a href="#" class="action-btn delete-btn" onclick="return confirm('Delete this playlist?')">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No playlists found.</p>
+    {% endif %}
+  </div>
+
+  <div class="section">
+    <h2>Uploaded Songs</h2>
+    {% if songs %}
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Genre</th>
+            <th>File</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for song in songs %}
+          <tr>
+            <td>{{ song.id }}</td>
+            <td>{{ song.title }}</td>
+            <td>{{ song.artist }}</td>
+            <td>{{ song.genre }}</td>
+            <td>{{ song.file }}</td>
+            <td>
+              <!-- Replace '#' with your edit/delete routes -->
+              <a href="#" class="action-btn edit-btn">Edit</a>
+              <a href="#" class="action-btn delete-btn" onclick="return confirm('Delete this song?')">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No songs found.</p>
+    {% endif %}
+  </div>
+
+  <div class="section">
+    <h2>Shared Content</h2>
+    {% if shared_items %}
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Sender</th>
+            <th>Receiver</th>
+            <th>Content Type</th>
+            <th>Content</th>
+            <th>Timestamp</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in shared_items %}
+          <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.sender }}</td>
+            <td>{{ item.receiver }}</td>
+            <td>{{ item.content_type }}</td>
+            <td>{{ item.content }}</td>
+            <td>{{ item.timestamp }}</td>
+            <td>
+              
+              <a href="#" class="action-btn edit-btn">Edit</a>
+              <a href="#" class="action-btn delete-btn" onclick="return confirm('Delete this shared item?')">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No shared content found.</p>
+    {% endif %}
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 Admin Panel - Music Playlist Hub</p>
+  </footer>
+
+  <script>
+    // Optional: JavaScript to support search/filter functionality in the tables.
+    function filterTable(tableId, searchInputId) {
+      const input = document.getElementById(searchInputId).value.toLowerCase();
+      const rows = document.querySelectorAll(`#${tableId} tbody tr`);
+      rows.forEach(row => {
+        const rowText = row.innerText.toLowerCase();
+        row.style.display = rowText.includes(input) ? "" : "none";
+      });
+    }
+  </script>
+</body>
+</html>

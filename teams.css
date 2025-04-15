@@ -1,0 +1,201 @@
+.teamdash {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url('backgound.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+
+body.ourteam {
+    position: relative;
+  
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+  
+body.ourteam::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(6px);
+    z-index: -1;
+}
+
+.containerourteams {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 80px;
+}
+
+.team {
+    background-color: rgba(20, 20, 20, 0.65);
+    border-radius: 20px;
+    padding: 20px;
+    width: 280px;
+    height: 620px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center; 
+    color: #fff;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    transition: all 0.3s ease-in-out;
+}
+
+.team:hover {
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), 0 0 50px rgba(0, 255, 255, 0.3); /* vibrant neon glow */
+    transform: scale(1.05); /* slightly enlarges the card */
+    transition: all 0.3s ease-in-out;
+}
+  
+.picture {
+    margin-top: 15px;
+    margin-bottom: 50px;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    object-position: center;
+    border: 2px solid #fff;
+}
+
+
+.ourinstructor {
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 20px;
+    padding: 30px;
+    width: 680px;
+    height: 620px;
+    color: white;
+    text-align: center; /* centers inline content */
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    transition: all 0.3s ease-in-out;
+    margin: 0 auto; /* horizontally centers the card in the page */
+}
+
+  
+.ourinstructor:hover {
+    box-shadow: 
+      0 0 30px rgba(0, 255, 255, 0.9), 
+      0 0 60px rgba(0, 255, 255, 0.4), 
+      0 0 90px rgba(0, 255, 255, 0.2);
+    transform: scale(1.08);
+}
+.picturesir {
+    margin-top: 50px;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.instructor-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
+.pic-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+
+.team-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    margin: 60px auto;
+    width: 90%;
+    max-width: 1000px;
+    color: white;
+    text-align: center;
+  }
+  
+  
+  
+.team-heading {
+    font-size: 40px;
+    color: #00ffff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+  
+.team-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+  
+.team-image {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+  
+.team-image:hover {
+    box-shadow: 
+      0 0 30px rgba(0, 255, 255, 0.9), 
+      0 0 60px rgba(0, 255, 255, 0.4), 
+      0 0 90px rgba(0, 255, 255, 0.2);
+    transform: scale(1.08);
+}
+.description {
+    margin-top: 50px; 
+    font-size: 18px;
+    color: #eee;
+    text-align: center;
+    max-width: 800px;
+    line-height: 1.6;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px; /* spacing from content above */
+  }
+  
+.dashboard-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #00ffff;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+.dashboard-btn:hover {
+    background-color: #00dddd;
+} 
